@@ -1,0 +1,1 @@
+SELECT nume,adresa,count(adresa) as membri FROM universitate.persoana group by nume having nume="Stefanescu";

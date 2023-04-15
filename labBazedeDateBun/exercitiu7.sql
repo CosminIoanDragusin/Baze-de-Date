@@ -1,0 +1,1 @@
+explain  SELECT id_student FROM universitate.nota;

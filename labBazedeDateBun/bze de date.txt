@@ -1,0 +1,71 @@
+insert into universitate.nota(id_nota,id_student,id_curs,nota,data_examen)
+values
+(9,4,1052,2021,310,2,100)
+
+SELECT nume,adresa,count(adresa) as membri FROM universitate.persoana group by nume having nume="Stefanescu";
+
+ELECT nota,count(id_student) as numar_elevi FROM universitate.nota group by id_student;
+select nota ,count(*) as nr_studenti from nota where nota='5'
+union
+select nota ,count(*) from nota where nota='7'
+union
+select nota ,count(*) as nr_studenti from nota where nota='8'
+union
+select nota ,count(*) from nota where nota='9'
+union
+select nota ,count(*) as nr_studenti from nota where nota='10'
+union
+select nota ,count(*) from nota where nota='6';
+
+select nota,count(*) as nr_studenti from nota
+group by nota;
+
+SELECT id_facultate,denumire FROM universitate.facultate
+union all
+select id_specializare,denumire from specializare order by denumire desc;
+
+explain  SELECT id_student FROM universitate.nota;
+
+SELECT cnp,concat(nume," ",prenume) as nume,
+concat('1978',
+'-',
+substr(cnp,4,1),
+'-',
+substr(cnp,3,1)) as data,
+substr(cnp,4,1) as luna FROM universitate.persoana;
+
+SELECT Ascii(profesor)  FROM universitate.materie where profesor like '%a%';
+
+SELECT cnp,concat(nume," ",prenume) as nume,substr(cnp,2,2) as luna FROM universitate.persoana;
+
+SELECT upper(decan) FROM universitate.facultate;
+
+SELECT concat(nume," ",prenume) as nume,cnp FROM universitate.persoana;
+SELECT 
+    CONCAT_WS(' ', 'serie', 'nr') AS serie_noua,
+    CONCAT_WS(' ', nume, prenume) AS nume_nou
+FROM
+    persoana
+
+SELECT data_examen,curdate(),datediff(curdate(),data_examen) as numarul_zile FROM universitate.nota;
+
+SELECT count(nr_matricol) as nr_studenti, count(cnp) as nr_persoane FROM universitate.student ;
+
+SELECT * FROM universitate.student;
+insert into universitate.student(nr_matricol,id_specializare,cnp,an_curent,grupa,semestru,bursa)
+values
+(9,4,1052,2021,310,2,100)
+
+SELECT * FROM universitate.materie;
+delete from universitate.materie
+where denumire like '%tica';
+
+SELECT * FROM universitate.specializare;
+insert into universitate.specializare(id_facultate,denumire)
+values
+(7,'Pedagogie')
+
+SELECT * FROM universitate.facultate;
+UPDATE universitate.facultate
+	SET denumire = "Psihologie"
+	WHERE id_facultate=7
